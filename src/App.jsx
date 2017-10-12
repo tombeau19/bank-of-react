@@ -39,6 +39,12 @@ class App extends Component {
       })
   }
 
+  addDebit = (newDebit) => {
+    const newDebits = [...this.state.debits]
+    newDebits.push(newDebit)
+    this.setState({debits: newDebits})
+  }
+
   componentWillMount() {
     this.getDebits()
     this.getCredits()
@@ -55,7 +61,7 @@ class App extends Component {
     }
 
     const DebitWrapper = () => {
-      return (<Debits debits={this.state.debits} />)
+      return (<Debits addDebit={this.state.addDebit} debits={this.state.debits} accountBalance={this.state.accountBalance} credits={this.state.credits} />)
     }
 
     return (
